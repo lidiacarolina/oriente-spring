@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-oriente
+    environment:
+      MYSQL_ROOT_PASSWORD: mota
+      MYSQL_DATABASE: oriente
+      MYSQL_USER: user
+      MYSQL_PASSWORD: mota
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: spring-boot
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app  # Montar o código-fonte local no container
+    environment:
+      JAVA_VERSION: 21
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/oriente
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: mota
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - db
+
+volumes:
+  db_data:
