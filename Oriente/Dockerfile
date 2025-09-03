@@ -13,5 +13,5 @@ COPY . .
 # Expor a porta da aplicação
 EXPOSE 8080
 
-# Comando para rodar a aplicação em modo desenvolvimento
-CMD ["mvn", "spring-boot:run"]
+# Comando para compilar e rodar os testes
+CMD ["mvn", "clean", "test", "spring-boot:run"]

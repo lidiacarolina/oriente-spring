@@ -29,6 +29,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       - db
+    command: mvn clean test spring-boot:run
 
 volumes:
   db_data:
