@@ -46,7 +46,7 @@ public class Aluno extends Usuario {
     @Override
     public void configurarCredenciais() {
         String nome = Normalizer.normalize(this.nome, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toLowerCase(Locale.ROOT).replace(" ", "");
-        this.email = nome + "@aluno.inatel.br";
+        // this.email = nome + "@aluno.inatel.br";
         this.senha = this.matricula.toString();
     }
 
